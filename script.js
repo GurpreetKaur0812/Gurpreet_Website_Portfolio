@@ -368,54 +368,15 @@ function debounce(func, wait) {
 }
 
 // ========================================
-// Login Modal Functionality
+// Login Modal Functionality 
 // ========================================
 
-// Initialize the User Pool
-const poolData = {
-    UserPoolId: awsConfig.cognito.userPoolId,
-    ClientId: awsConfig.cognito.userPoolWebClientId
-};
-const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
-function handleSignUp() {
-    const email = document.getElementById('emailInput').value;
-    const password = document.getElementById('passInput').value;
-    const firstName = document.getElementById('nameInput').value;
-
-    // Cognito uses 'given_name' for First Name
-    const attributeList = [
-        new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'given_name', Value: firstName }),
-        new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email })
-    ];
-
-    userPool.signUp(email, password, attributeList, null, (err, result) => {
-        if (err) {
-            alert(err.message || JSON.stringify(err));
-            return;
-        }
-        alert("Sign up successful! Please check your email for a verification code.");
-        // Optional: Show a field to enter the verification code here
-    });
+function showLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
 }
 
-// Function to switch between Login and Sign Up UI
-function toggleMode() {
-    const title = document.getElementById('modalTitle');
-    const nameField = document.getElementById('nameField');
-    const mainBtn = document.getElementById('mainBtn');
-
-    if (title.innerText === "Sign Up") {
-        title.innerText = "Login";
-        nameField.style.display = "none";
-        mainBtn.innerText = "Sign In";
-        mainBtn.onclick = handleLogin; // Use your existing handleLogin function
-    } else {
-        title.innerText = "Sign Up";
-        nameField.style.display = "block";
-        mainBtn.innerText = "Sign Up";
-        mainBtn.onclick = handleSignUp;
-    }
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
 }
 
 // Use debounced scroll for performance
