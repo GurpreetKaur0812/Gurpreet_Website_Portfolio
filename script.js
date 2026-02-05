@@ -367,6 +367,18 @@ function debounce(func, wait) {
     };
 }
 
+// ========================================
+// Login Modal Functionality
+// ========================================
+
+function showLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
 // Use debounced scroll for performance
 const debouncedScrollProgress = debounce(updateScrollProgress, 10);
 window.addEventListener('scroll', debouncedScrollProgress);
