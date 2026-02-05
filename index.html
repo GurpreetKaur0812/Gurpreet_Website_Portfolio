@@ -1248,17 +1248,24 @@
     </footer>
     <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
     <div style="background:white; padding:40px; border-radius:15px; width:90%; max-width:400px; position:relative; color:#333;">
-        <h2 style="margin-bottom:20px;">Project Login</h2>
-        <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Part of the AWS Cognito Integration Project</p>
+        <h2 id="modalTitle">Sign Up</h2>
         
+        <div id="nameField">
+            <input type="text" id="nameInput" placeholder="First Name" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        </div>
+
         <input type="email" id="emailInput" placeholder="Email" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
         <input type="password" id="passInput" placeholder="Password" style="width:100%; padding:12px; margin-bottom:20px; border:1px solid #ddd; border-radius:5px;">
         
-        <button onclick="handleLogin()" style="width:100%; padding:12px; background:#ff69b4; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Sign In</button>
+        <button id="mainBtn" onclick="handleSignUp()" style="width:100%; padding:12px; background:#ff69b4; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Sign Up</button>
+        
+        <p style="text-align:center; margin-top:15px; font-size:0.9rem;">
+            Already have an account? <a href="javascript:void(0)" onclick="toggleMode()">Login</a>
+        </p>
         <button onclick="closeLoginModal()" style="width:100%; margin-top:10px; background:none; border:none; color:#999; cursor:pointer;">Cancel</button>
     </div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
